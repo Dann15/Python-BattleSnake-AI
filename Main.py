@@ -1,5 +1,9 @@
 import random as rand
 
+
+# marcus i will literally pay you to annotate your code
+# if this code works perfectly then i guess we're fine
+
 jeff_did_not_kill_himself = True
 
 
