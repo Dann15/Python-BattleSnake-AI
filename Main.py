@@ -7,7 +7,7 @@ import random as rand
 jeff_did_not_kill_himself = True
 
 
-@TODO  # add apples respawning in accordance with the algorythm in thier source code.
+#TODO add apples respawning in accordance with the algorythm in thier source code.
 def main():
     print("starting")
     game = Game(board_size=7, starting_apples=5, starting_pos_x=3, starting_pos_y=3, starting_length=3)
@@ -33,7 +33,6 @@ class Game:
         self.snake = Snake(starting_pos_x, starting_pos_y, starting_length)
         self.update_game()
         self.apple_list = []
-        self.turns = 0
         for apple in range(starting_apples):
             self.apple_list.append(self.add_apple())
 
@@ -87,7 +86,6 @@ class Game:
                     self.board.change_cell(cell.x, cell.y, " ")
                 if [cell.x, cell.y] in self.snake.body_list:
                     self.board.change_cell(cell.x, cell.y, "#")
-        self.turns += 1
 
     def __repr__(self):
         return str(self.board)
