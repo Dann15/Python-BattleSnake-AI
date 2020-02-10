@@ -29,7 +29,7 @@ class Game:
         # creates a snake instance
         self.turns = 0
         self.update_game()  # draws everything and increments turns, this is reset to zero later in init
-        self.turns = 0 # resets to zero
+        self.turns = 0  # resets to zero
         self.apple_list = []  # empty list to store apple coords in form [x,y]
         for apple in range(starting_apples):  # makes all the starting apples
             self.apple_list.append(self.add_apple())
@@ -111,23 +111,23 @@ class Snake:
                 self.body_list.pop()
             self.last_command = command
         else:
-            self.head.shift(self.last_command) # default if invalid command entered
+            self.head.shift(self.last_command)  # default if invalid command entered
 
     def __repr__(self):
-        for cell in self.body:
+        for cell in self.body_list:
             print(cell, end=", ")
 
 
 class Board:
     def __init__(self, size: int):
-        self.grid = [[Cell(i, j, " ") for i in range(size + 1)] for j in range(size + 1)] # creates a 2d array via
+        self.grid = [[Cell(i, j, " ") for i in range(size + 1)] for j in range(size + 1)]  # creates a 2d array via
         # python magic
         self.size = size
 
-    def change_cell(self, old_x: int, old_y: int, new_content: chr): # changes whats inside a given cell
+    def change_cell(self, old_x: int, old_y: int, new_content: chr):  # changes whats inside a given cell
         self.grid[old_x][old_y].contents = new_content
 
-    def whats_here(self, x, y): # returns whats in this cell.
+    def whats_here(self, x, y):  # returns whats in this cell.
         return self.grid[x][y].contents
 
     def __repr__(self):
@@ -147,7 +147,8 @@ class Cell:
         self.y = y
         self.contents = contents
 
-    def shift(self, command): # dont look too closely, the numbers actually make no sense, but it works to move a cell.
+    def shift(self, command):  # do not look too closely, the numbers actually make no sense, but it works to move a
+        # cell.
         if command == "U":
             self.x -= 1
         if command == "D":
