@@ -13,6 +13,8 @@ class SnakeEnv(gym.Env):
     MAX_TURNS = int(1e+10)
 
     # TODO make a seed generation thing for starting position
+    # Seed generation would involve randomly placing the snake AND apples
+
 
     def __init__(self):
         super(SnakeEnv, self).__init__()
