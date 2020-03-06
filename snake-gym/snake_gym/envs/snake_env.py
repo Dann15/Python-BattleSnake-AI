@@ -17,8 +17,8 @@ class SnakeEnv(gym.Env):
 
 
     def __init__(self):
-        super(SnakeEnv, self).__init__()
-        self.game = Game(board_size=7, starting_apples=5, starting_pos_x=3, starting_pos_y=3, starting_length=3)
+        super(SnakeEnv, seed, self).__init__()
+        self.game = Game(board_size=7, starting_apples=5, seed, starting_length=3)
         self.state = game.board.grid
         self.counter = 0
         self.action_space = spaces.Discrete(4)

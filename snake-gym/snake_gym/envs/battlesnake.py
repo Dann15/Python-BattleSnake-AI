@@ -24,8 +24,14 @@ def main():
 
 
 class Game:
-    def __init__(self, board_size, starting_apples=5, starting_pos_x=3, starting_pos_y=3, starting_length=3):
+    def __init__(self, board_size, starting_apples=5, seed, starting_length=3):
         self.board = Board(board_size)  # creates a square board of side length board_size
+	self.seed = seed # sets all random values based on a seed
+	self.apples_spawned = 0
+	rand.seed(self.seed)
+	starting_pos_x = rand.randint(7)
+	rand.seed(self.seed*2)
+	starting_pos_y = rand.randint(7)
         self.snake = Snake(starting_pos_x, starting_pos_y, starting_length)  # sets starting pos of the snake and
         # creates a snake instance
         self.turns = 0
@@ -38,7 +44,11 @@ class Game:
     def add_apple(self):  # adds apple in a empty spot. all this does is return valid coords, so YOU have to append
         # that bad boy.
         while jeff_did_not_kill_himself:
-            poss_coords_x, poss_coords_y = rand.randint(0, self.board.size), rand.randint(0, self.board.size)
+	    rand.seed(self.seed+self.apples_spawned)
+            poss_coords_x = rand.randint(0, self.board.size)
+	    rand.seed((self.seed+self.apples_spawned)*2)
+	    poss_coords_y = rand.randint(0, self.board.size)
+	    self.apples_spawned += 1
             # generates random location in x, y
             if self.board.whats_here(poss_coords_x, poss_coords_y) == " ":
                 self.board.change_cell(poss_coords_x, poss_coords_y, "A")
